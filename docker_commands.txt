@@ -1,0 +1,66 @@
+docker images - list of images docker
+docker ignore rmimage - 
+docker rm name image - remove image
+docker rm name image --force remove when run 
+docker exec -i -t b89 bash
+
+docker ps -a (перегляд)
+docker images ls (перегляд)
+
+docker run -d --restart=always -p (8000 ... 8900):80 --name ItStep nginx (скачування, наприклад nginx)
+
+docker stop #CONTAINER ID | docker start #CONTAINER ID
+docker rm #CONTAINER ID | docker rm #CONTAINER ID --force
+
+docker exec -i -t ItStep bash (захід на убунту, під рутом)
+
+docker exec -w /home ItStep ls -l (перегляд потрібної категорії в контейнері убунту)
+
+sudo usermod -aG docker sasha - add user in to group docker
+
+docker build -t ivanyuk1985/itstepexample:ver1 .
+
+docker login - login in to docker profile
+
+docker build -t ivanyuk1985/itstepexample:ver2 . - build image
+
+docker push ivanyuk1985/itstepexample:ver2 - виложити на репозиторій 1985
+
+docker volume create my ubuntu - create volume for docker container
+
+docker run -d \
+--name SashaNew \
+--restart=always \
+-p 8015:80 \
+--mount source=myubuntu,target=/home/sasha/Shag/Docker/Ubuntu25032023   ivanyukyukubuntu:ver1     ---- mount volume for docker container
+
+docker inspect SashaNew | grep Mounts -A 10    - check was volume mounted
+
+docker run -d \
+  -e MYSQL_ROOT_PASSWORD=my-secret-pw \
+  --mount /home/docker/mysql-data:/var/lib/mysql \
+  --name mysqlserver \
+  mysql - опис
+Эта команда запускает контейнер Docker, который содержит сервер баз данных MySQL. Давайте рассмотрим каждый аргумент команды:
+
+docker run - это команда Docker, которая запускает контейнер из образа.
+-d - этот флаг указывает, что контейнер должен работать в фоновом режиме (daemon mode).
+-e MYSQL_ROOT_PASSWORD=my-secret-pw - этот аргумент задает переменную окружения MYSQL_ROOT_PASSWORD со значением my-secret-pw. Это означает, что при запуске контейнера будет установлен пароль для пользователя root базы данных MySQL.
+--mount /home/docker/mysql-data:/var/lib/mysql - этот аргумент монтирует директорию /home/docker/mysql-data на хост-системе в директорию /var/lib/mysql внутри контейнера. Это позволяет сохранять данные базы данных между запусками контейнера.
+--name mysqlserver - этот аргумент задает имя контейнера.
+mysql - это имя Docker-образа, который нужно использовать для запуска контейнера.
+Таким образом, эта команда запускает контейнер с именем mysqlserver, который содержит сервер баз данных MySQL с заданным паролем для пользователя root. Кроме того, она монтирует директорию /home/docker/mysql-data на хост-системе внутри контейнера, что позволяет сохранять данные базы данных между запусками контейнера.
+
+docker compose 
+
+
+
+
+
+
+
+
+
+
+
+
